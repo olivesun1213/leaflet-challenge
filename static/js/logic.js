@@ -88,8 +88,7 @@ function createMap(earthquakes) {
       id: "light-v10",
       accessToken: API_KEY
    });
-
-    
+ 
 
    var outdoors = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
       attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
@@ -128,22 +127,22 @@ function createMap(earthquakes) {
   // Set up the legend
   // When the layer control is added, insert a div with the class of "legend"
    //create the legend
-   var legend = L.control({
+  var legend = L.control({
     position: "bottomleft"
 });
 
-legend.onAdd = function(myMap) {
+  legend.onAdd = function(myMap) {
     var div = L.DomUtil.create("div", "info legend"),
     magnitude = [0, 1, 2, 3, 4, 5],
     labels = [];
 
 // Create legend
-for (var i = 0; i < magnitude.length; i++) {
+  for (var i = 0; i < magnitude.length; i++) {
     div.innerHTML +=
-        '<i style="background:' + getColor(magnitude[i] + 1) + '"></i> ' +
+        '<i class="square" style ="background:' + getColor(magnitude[i] + 1) + '"></i> ' +
         magnitude[i] + (magnitude[i + 1] ? '&ndash;' + magnitude[i + 1] + '<br>' : '+');
 }
-return div;
+  return div;
 };
 legend.addTo(myMap);
 }
